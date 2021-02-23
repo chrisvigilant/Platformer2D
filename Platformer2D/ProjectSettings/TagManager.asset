@@ -45,3 +45,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: FarBackground
+    uniqueID: 4133697369
+    locked: 0
+  - name: Background
+    uniqueID: 1016623505
+    locked: 0
+  - name: RaycastLayer
+    uniqueID: 497364095
+    locked: 0
+  - name: PlayerLayer
+    uniqueID: 2198265709
+    locked: 0
+  - name: Foreground
+    uniqueID: 2825156415
+    locked: 0

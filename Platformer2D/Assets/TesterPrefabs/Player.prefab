@@ -181,7 +181,7 @@ MonoBehaviour:
   jumpForce: 10
   groundLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   feet: {fileID: 0}
 --- !u!114 &6770611251708178300
 MonoBehaviour:
