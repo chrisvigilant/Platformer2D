@@ -10,12 +10,25 @@ public class GameManager : Singleton<GameManager>
     //Keep track of the game state
     //Generate other Persistent Systems
 
+    public enum GameState
+    {
+        PREGAME,
+        RUNNING,
+        PAUSED
+    }
+
     public GameObject[] SystemPrefabs;
 
     private List<GameObject> _instancedSystemPrefabs;
     List<AsyncOperation> _loadOperations;
+    GameState _currentGameState = GameState.PREGAME;
 
     private string _currentLevelName = string.Empty;
+
+    /*public GameState CurrentGameState()
+    {
+       
+    }*/
 
     private void Start()
     {
@@ -37,6 +50,26 @@ public class GameManager : Singleton<GameManager>
     void OnUnloadOperationcomplete(AsyncOperation ao)
     {
         Debug.Log("Unload Complete.");
+    }
+
+    void UpdateState(GameState state)
+    {
+        _currentGameState = state;
+
+        switch (_currentGameState)
+        {
+            case GameState.PREGAME:
+                break;
+
+            case GameState.RUNNING:
+                break;
+
+            case GameState.PAUSED:
+                break;
+
+            default:
+                break;
+        }
     }
 
     void InstatiateSystemPrefabs()
