@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+
+[System.Serializable] public class EventGameState : UnityEvent<GameManager.GameState, GameManager.GameState> { }
 
 public class GameManager : Singleton<GameManager>
 {
@@ -18,6 +21,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     public GameObject[] SystemPrefabs;
+    public EventGameState OnGameStateChanged;
 
     private List<GameObject> _instancedSystemPrefabs;
     List<AsyncOperation> _loadOperations;
@@ -25,10 +29,11 @@ public class GameManager : Singleton<GameManager>
 
     private string _currentLevelName = string.Empty;
 
-    /*public GameState CurrentGameState()
+    public GameState CurrentGameState
     {
-       
-    }*/
+        get { return _currentGameState; }
+        private set { _currentGameState = value; }
+    }
 
     private void Start()
     {
@@ -39,13 +44,21 @@ public class GameManager : Singleton<GameManager>
 
         InstatiateSystemPrefabs();
 
-        LoadLevel("FirstLevel");
     }
 
     void OnLoadOperationcomplete(AsyncOperation ao)
     {
+        if (_loadOperations.Contains(ao))
+        {
+            _loadOperations.Remove(ao);
+
+            if (_loadOperations.Count == 0)
+            {
+                UpdateState(GameState.RUNNING);
+            }
+        }
+
         Debug.Log("Load Complete.");
-        _loadOperations.Remove(ao);
     }
     void OnUnloadOperationcomplete(AsyncOperation ao)
     {
@@ -54,6 +67,7 @@ public class GameManager : Singleton<GameManager>
 
     void UpdateState(GameState state)
     {
+        GameState previousGameState = _currentGameState;
         _currentGameState = state;
 
         switch (_currentGameState)
@@ -70,6 +84,8 @@ public class GameManager : Singleton<GameManager>
             default:
                 break;
         }
+
+        OnGameStateChanged.Invoke(_currentGameState, previousGameState);
     }
 
     void InstatiateSystemPrefabs()
@@ -114,5 +130,10 @@ public class GameManager : Singleton<GameManager>
             Destroy(_instancedSystemPrefabs[i]);
         }
         _instancedSystemPrefabs.Clear();
+    }
+
+    public void StartGame()
+    {
+        LoadLevel("FirstLevel");
     }
 }
