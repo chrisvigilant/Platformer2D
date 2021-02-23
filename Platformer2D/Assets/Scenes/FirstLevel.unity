@@ -316,10 +316,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1063851039359714388, guid: f7fad32f3ea3be94fa80f936e75e6213,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.07450981
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063851039359714388, guid: f7fad32f3ea3be94fa80f936e75e6213,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5796589
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063851039359714388, guid: f7fad32f3ea3be94fa80f936e75e6213,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.6313726
+      objectReference: {fileID: 0}
     - target: {fileID: 1782995076821931825, guid: f7fad32f3ea3be94fa80f936e75e6213,
         type: 3}
       propertyPath: m_Name
       value: RaycastCircle3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782995076821931825, guid: f7fad32f3ea3be94fa80f936e75e6213,
+        type: 3}
+      propertyPath: m_TagString
+      value: Yellow
       objectReference: {fileID: 0}
     - target: {fileID: 2866130266256207620, guid: f7fad32f3ea3be94fa80f936e75e6213,
         type: 3}
@@ -473,6 +493,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RaycastCircle2
       objectReference: {fileID: 0}
+    - target: {fileID: 1782995076821931825, guid: f7fad32f3ea3be94fa80f936e75e6213,
+        type: 3}
+      propertyPath: m_TagString
+      value: Magenta
+      objectReference: {fileID: 0}
     - target: {fileID: 2866130266256207620, guid: f7fad32f3ea3be94fa80f936e75e6213,
         type: 3}
       propertyPath: m_Offset.x
@@ -608,10 +633,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1063851039359714388, guid: f7fad32f3ea3be94fa80f936e75e6213,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.6313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063851039359714388, guid: f7fad32f3ea3be94fa80f936e75e6213,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.11409014
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063851039359714388, guid: f7fad32f3ea3be94fa80f936e75e6213,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.07450981
+      objectReference: {fileID: 0}
     - target: {fileID: 1782995076821931825, guid: f7fad32f3ea3be94fa80f936e75e6213,
         type: 3}
       propertyPath: m_Name
       value: RaycastCircle1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782995076821931825, guid: f7fad32f3ea3be94fa80f936e75e6213,
+        type: 3}
+      propertyPath: m_TagString
+      value: Blue
       objectReference: {fileID: 0}
     - target: {fileID: 2866130266256207620, guid: f7fad32f3ea3be94fa80f936e75e6213,
         type: 3}

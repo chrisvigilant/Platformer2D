@@ -17,13 +17,29 @@ public class ColorDetection : MonoBehaviour
 
     void FixedUpdate()
     {
-		//RaycastHit hit;
+		RaycastHit2D hit;
 		Ray ray = new Ray(transform.position, Vector3.forward);
 		Vector3 fwd = this.transform.TransformDirection(0, 0, 1f);
 		Debug.DrawRay(this.transform.position, fwd, Color.green);
+		hit = Physics2D.GetRayIntersection(ray, 1f, bg);
 
-		if (Physics2D.GetRayIntersection(ray, 1f, bg)){
-			Debug.Log("Dis: Background!");
+		if (hit){
+			back = hit.transform.gameObject;
+			if (back.CompareTag("Blue"))
+            {
+                rend.color = Color.blue;
+			}
+
+			else if (back.CompareTag("Yellow"))
+			{
+				rend.color = Color.yellow;
+			}
+
+			else if (back.CompareTag("Magenta"))
+			{
+				rend.color = Color.magenta;
+			}
+			//Debug.Log("Dis: Background!");
 		}
 
     }
