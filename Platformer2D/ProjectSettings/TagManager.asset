@@ -8,6 +8,7 @@ TagManager:
   - Red
   - Yellow
   - Magenta
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -18,15 +19,15 @@ TagManager:
   - 
   - 
   - Foreground
+  - 
   - PlayerLayer
+  - GroundLayer
+  - 
   - RaycastLayer
+  - 
   - Background
+  - 
   - FarBackground
-  - 
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 
