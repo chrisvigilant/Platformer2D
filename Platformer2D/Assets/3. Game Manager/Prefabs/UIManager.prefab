@@ -49,6 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfe0098dcbe61541aacc94d9e9afd3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ResumeButton: {fileID: 114615682490614664}
+  RestartButton: {fileID: 114110037165574424}
+  QuitButton: {fileID: 114161082283702470}
 --- !u!1 &1052357631752932
 GameObject:
   m_ObjectHideFlags: 0

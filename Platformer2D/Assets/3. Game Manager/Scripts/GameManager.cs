@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-[System.Serializable] public class EventGameState : UnityEvent<GameManager.GameState, GameManager.GameState> { }
-
 public class GameManager : Singleton<GameManager>
 {
     //Keep  track what Level we are currently in
@@ -21,7 +19,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     public GameObject[] SystemPrefabs;
-    public EventGameState OnGameStateChanged;
+    public Event.EventGameState OnGameStateChanged;
 
     private List<GameObject> _instancedSystemPrefabs;
     List<AsyncOperation> _loadOperations;
@@ -44,6 +42,21 @@ public class GameManager : Singleton<GameManager>
 
         InstatiateSystemPrefabs();
 
+        UIManager.Instance.OnMainMenuFadeComplete.AddListener(HandleMainMenuFadeComplete);
+
+    }
+
+    private void Update()
+    {
+        if (_currentGameState == GameState.PREGAME)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
     }
 
     void OnLoadOperationcomplete(AsyncOperation ao)
@@ -65,6 +78,14 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("Unload Complete.");
     }
 
+    void HandleMainMenuFadeComplete(bool fadeOut)
+    {
+        if (!fadeOut)
+        {
+            UnloadLevel(_currentLevelName);
+        }
+    }
+
     void UpdateState(GameState state)
     {
         GameState previousGameState = _currentGameState;
@@ -73,12 +94,15 @@ public class GameManager : Singleton<GameManager>
         switch (_currentGameState)
         {
             case GameState.PREGAME:
+                Time.timeScale = 1.0f;
                 break;
 
             case GameState.RUNNING:
+                Time.timeScale = 1.0f;
                 break;
 
             case GameState.PAUSED:
+                Time.timeScale = 0.0f;
                 break;
 
             default:
@@ -134,6 +158,23 @@ public class GameManager : Singleton<GameManager>
 
     public void StartGame()
     {
-        LoadLevel("FirstLevel");
+        LoadLevel("FreeAsset2D");
+    }
+
+    public void TogglePause()
+    {
+        
+        UpdateState(_currentGameState == GameState.RUNNING ? GameState.PAUSED : GameState.RUNNING);
+    }
+
+    public void RestartLevel()
+    {
+        UpdateState(GameState.PREGAME);
+    }
+
+    public void QuitGame()
+    {
+        //implement features for quitting (save shits and stuff) Also exit to main menu instead of Ecit application
+        Application.Quit();
     }
 }
