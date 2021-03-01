@@ -9,7 +9,7 @@ public class UIManager : Singleton<UIManager>
 
     [SerializeField] private Camera _dummyCamera;
     
-    public Event.EventFadeComplete OnMainMenuFadeComplete;
+    public Events.EventFadeComplete OnMainMenuFadeComplete;
     
     private void Start()
     {

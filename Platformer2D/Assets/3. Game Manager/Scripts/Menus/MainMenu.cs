@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private AnimationClip _fadeOutAnimation;
     [SerializeField] private AnimationClip _fadeInAnimation;
 
-    public Event.EventFadeComplete OnMainMenuFadeComplete;
+    public Events.EventFadeComplete OnMainMenuFadeComplete;
 
     private void Start()
     {

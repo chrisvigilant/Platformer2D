@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     public GameObject[] SystemPrefabs;
-    public Event.EventGameState OnGameStateChanged;
+    public Events.EventGameState OnGameStateChanged;
 
     private List<GameObject> _instancedSystemPrefabs;
     List<AsyncOperation> _loadOperations;
